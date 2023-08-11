@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: container-webapp
-          image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/webapp:071180f
+          image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/webapp:v1
           ports:
             - containerPort: 80
           env:
@@ -27,8 +27,14 @@ spec:
             - name: DBPORT
               value: "3306"
             - name: DBUSER
-              value: "root"
+              valueFrom: 
+                secretKeyRef:
+                  name: db-credentials
+                  key: DBUSER
             - name: DBPWD
-              value: "pw"
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: DBPWD
             - name: DATABASE
               value: "employees"
