@@ -1,1 +1,1 @@
-# clo835-final-proj-k8s
+# clo835 k8s deployment manifests
