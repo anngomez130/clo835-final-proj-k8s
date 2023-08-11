@@ -18,9 +18,12 @@ spec:
     spec:
       containers:
       - name: container-mysql
-        image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/mysql:071180f
+        image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/mysql:v1
         ports:
           - containerPort: 3306
         env:
           - name: MYSQL_ROOT_PASSWORD
-            value: pw
+            valueFrom:
+              secretKeyRef:
+                name: db-credentials
+                key: DBPWD
