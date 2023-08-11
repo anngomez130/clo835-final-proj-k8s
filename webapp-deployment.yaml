@@ -21,20 +21,8 @@ spec:
           image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/webapp:v1
           ports:
             - containerPort: 80
-          env:
-            - name: DBHOST
-              value: "svc-mysql.db.svc.cluster.local"
-            - name: DBPORT
-              value: "3306"
-            - name: DBUSER
-              valueFrom: 
-                secretKeyRef:
-                  name: db-credentials
-                  key: DBUSER
-            - name: DBPWD
-              valueFrom:
-                secretKeyRef:
-                  name: db-credentials
-                  key: DBPWD
-            - name: DATABASE
-              value: "employees"
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: db-credentials
