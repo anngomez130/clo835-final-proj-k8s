@@ -6,3 +6,4 @@ data:
   S3_BUCKET_NAME: "clo835-final-proj-bucket"
   S3_BUCKET_KEY: "interstellar.jpg"
   BGIMAGE: "./static/interstellar.jpg"
+  NAMES: "Gelene Asuncion,Adrian Nico Gomez,Meloudy Tubes Yodico"
