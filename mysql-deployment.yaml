@@ -16,11 +16,18 @@ spec:
       labels:
         app: mysql
     spec:
+      volumes:
+        - name: data-mysql
+          persistentVolumeClaim:
+            claimName: pvc-mysql
       containers:
       - name: container-mysql
         image: 717693563238.dkr.ecr.us-east-1.amazonaws.com/mysql:v1
         ports:
           - containerPort: 3306
+        volumeMounts:
+          - name: data-mysql
+            mountPath: /var/lib/mysql
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
