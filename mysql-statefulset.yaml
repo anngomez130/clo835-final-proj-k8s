@@ -1,8 +1,8 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: dp-mysql
+  name: ss-mysql
   namespace: db
   labels:
     app: mysql
@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  serviceName: svc-mysql
   template:
     metadata:
       labels:
@@ -34,3 +35,12 @@ spec:
               secretKeyRef:
                 name: db-credentials
                 key: DBPWD
+  volumeClaimTemplates:
+    - metadata:
+        name: pvc-mysql
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
