@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dp-webapp
-  namespace: app
+  namespace: final
   labels:
     app: employees
 spec:
