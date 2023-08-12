@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: final
+data:
+  S3_BUCKET_NAME: "clo835-final-proj-bucket"
+  S3_BUCKET_KEY: "interstellar.jpg"
+  BGIMAGE: "./static/interstellar.jpg"
+  DBHOST: "svc-mysql.db.svc.cluster.local"
+  DBPORT: "3306"
+  DATABASE: "employees"
+  NAMES: "Gelene Asuncion,Adrian Nico Gomez,Meloudy Tubes Yodico"
